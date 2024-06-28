@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "4.19.2",
     "morgan": "1.10.0",
-    "nodemon": "3.1.2"
+    "nodemon": "3.1.2",
+    "xmlbuilder2": "^3.1.1"
   },
   "type": "module"
 }
