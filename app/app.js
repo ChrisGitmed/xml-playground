@@ -1,10 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
 
+import { router } from './router.js';
+
 class Application {
   /// CONSTRUCTOR
   static app = express()
     .use(morgan('dev'))
+    .use(router)
     .use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
   /// START
