@@ -1,11 +1,13 @@
 import { Router } from 'express';
-const router = Router();
+import { readFile } from 'fs/promises';
 
 import {
   create as createXml,
   convert as convertXml,
 } from 'xmlbuilder2';
 
+
+const router = Router();
 
 // Health Check
 router.get(
@@ -46,8 +48,11 @@ router.get(
 router.get(
   '/xml-to-js',
   async (req, res, next) => {
-    // Start with XML
-    const originalXml = '<root att="val"><foo><bar>foobar</bar></foo></root>';
+    // Read from the sample XML file
+    const fileBuffer = await readFile('app/sample.xml');
+
+    // Convert the file buffer to an XML string
+    const originalXml = fileBuffer.toString('utf-8');
 
     // Convert the XML to JS
     const convertedXml = convertXml(originalXml, { format: "object" });
