@@ -85,14 +85,14 @@ router.get(
     const fileBuffer = await readFile('app/sample.xml');
 
     // Convert the file buffer to an XML string
-    const originalXml = fileBuffer.toString('utf-8');
+    const xmlString = fileBuffer.toString('utf-8');
 
     // Convert the XML to JS
     const xmlParser = new XMLParser();
-    const jsObject = xmlParser.parse(originalXml);
+    const parsedObject = xmlParser.parse(xmlString);
 
     // Return the JS
-    return res.status(200).json(jsObject);
+    return res.status(200).json(parsedObject);
   }
 )
 
